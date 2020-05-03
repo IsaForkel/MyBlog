@@ -54,4 +54,77 @@ class RepositorioUsuario{
         }
         return $total_usuarios;
     }
+
+    public static function insertar_usuario($conexion, $usuario){
+        $usuario_insertado = false;
+
+        if(isset($conexion)){
+            try{
+                $sql = "INSERT INTO usuarios(nombre, email, password, fecha_registro, activo) 
+                VALUES (:nombre,:email,:password,NOW(),0)";
+
+                $sentencia = $conexion -> prepare($sql);
+                $nombre_temp = $usuario -> getNombre();
+                $email_temp = $usuario -> getEmail();
+                $password_temp = $usuario -> getPassword();
+                $sentencia -> bindParam(':nombre', $nombre_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':email', $email_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':password', $password_temp, PDO::PARAM_STR);
+
+                $usuario_insertado = $sentencia -> execute();
+
+            }catch(PDOException $ex){
+                print "Error" . $ex -> getMessage();
+            }
+        }
+
+        return $usuario_insertado;
+    }
+
+    public static function nombre_existe($conexion, $nombre){
+        $nombre_existe = true;
+
+        if(isset($conexion)){
+            try {
+                $sql = "SELECT * FROM usuarios WHERE nombre = :nombre";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+                
+                if(count($resultado)){
+                    $nombre_existe = true;
+                }else{
+                    $nombre_existe = false;
+                }
+            } catch (PDOException $ex) {
+                print "Error" . $ex -> getMessage();
+            }
+        }
+        return $nombre_existe;
+    }
+
+    public static function email_existe($conexion, $email){
+        $email_existe = true;
+
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM usuarios WHERE email = :email";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':email', $email, PDO::PARAM_STR);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+
+                if(count($resultado)){
+                    $email_existe = true;
+                }else{
+                    $email_existe = false;
+                }
+
+            }catch(PDOException $ex){
+                print "Error". $ex -> getMessage();
+            }
+        }
+        return $email_existe;
+    }
 }

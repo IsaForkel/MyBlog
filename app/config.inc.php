@@ -1,7 +1,7 @@
 <?php
 
-$nombre_servidor = 'localhost:3307';
-$nombre_usuario = 'root';
-$password = 'wertyuk';
-$nombre_base_datos = 'blog';
+define('nombre_servidor', 'localhost:3307');
+define('nombre_usuario','root');
+define('password', 'wertyuk');
+define('nombre_base_datos', 'blog');
 

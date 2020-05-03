@@ -28,3 +28,12 @@ body {
 #navbar li a:hover, #navbar li a:active{
     color: #ffd480 !important;
 }
+.btn-default{
+    background-color: #005266 !important;
+    color: white;
+}
+.btn-default:hover{
+    background-color: #4682B4 !important;
+    color: white !important;
+}
+
