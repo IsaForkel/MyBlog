@@ -14,11 +14,16 @@ if (isset($_POST['enviar'])) {
     );
 
     if ($validador->registro_valido()) {
-        $usuario = new Usuario("", $validador->get_nombre(), $validador->get_email(), $validador->get_clave(), "", "");
+        $usuario = new Usuario("",
+                     $validador->get_nombre(), 
+                     $validador->get_email(), 
+                     password_hash($validador->get_clave(), PASSWORD_DEFAULT), 
+                     "", 
+                     "");
         $usuario_insertado = RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
 
         if($usuario_insertado){
-            //Redirigir al login
+            
 
         }
     }
