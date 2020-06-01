@@ -13,7 +13,6 @@ Conexion::cerrar_conexion();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </button>
             <ul class="nav nav-pills navbar-left navbar-brand">
                 <li>
@@ -26,9 +25,9 @@ Conexion::cerrar_conexion();
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Entradas</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favoritos</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Autores</a></li>
+                <li><a href="<?php echo ruta_entradas; ?>"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Entradas</a></li>
+                <li><a href="<?php echo ruta_favoritos; ?>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favoritos</a></li>
+                <li><a href="<?php echo ruta_autores; ?>"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Autores</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -40,13 +39,13 @@ Conexion::cerrar_conexion();
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<?php echo ruta_login; ?>">
                         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
                         Iniciar Sesion
                     </a>
                 </li>
                 <li>
-                    <a href="registro.php">
+                    <a href="<?php echo ruta_registro;?>">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         Registro
                     </a>

@@ -3,6 +3,8 @@ include_once 'app/Conexion.inc.php';
 include_once 'app/Usuario.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/ValidadorRegistro.inc.php';
+include_once 'app/Redireccion.inc.php';
+
 if (isset($_POST['enviar'])) {
     Conexion::abrir_conexion();
     $validador = new ValidadorRegistro(
@@ -23,7 +25,7 @@ if (isset($_POST['enviar'])) {
         $usuario_insertado = RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
 
         if($usuario_insertado){
-            
+            Redireccion::redirigir(ruta_registro_correcto . '?nombre=' . $usuario->getNombre());
 
         }
     }
