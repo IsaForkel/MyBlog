@@ -14,3 +14,4 @@ define("ruta_login", servidor."/login.php");
 define("ruta_entradas", servidor."/entradas.php");
 define("ruta_favoritos", servidor."/favoritos.php");
 define("ruta_autores", servidor."/autores.php");
+define("ruta_logout", servidor."/logout.php");

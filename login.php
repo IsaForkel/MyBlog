@@ -3,6 +3,12 @@
 include_once 'app/config.inc.php';
 include_once 'app/Conexion.inc.php';
 include_once 'app/ValidadorLogin.inc.php';
+include_once 'app/ControlSesion.inc.php';
+include_once 'app/Redireccion.inc.php';
+
+if(ControlSesion::sesion_iniciada()){
+    Redireccion::redirigir(servidor);
+}
 
 if(isset($_POST['login'])){
     Conexion::abrir_conexion();
@@ -11,9 +17,12 @@ if(isset($_POST['login'])){
 
     if($validador -> obtener_error() === '' && !is_null($validador -> obtener_usuario())){
         //iniciar Sesion
+        ControlSesion::iniciar_sesion(
+            $validador -> obtener_usuario() -> getId(),
+            $validador -> obtener_usuario() -> getNombre()
+        );
         //Redirigir al Index
-        echo 'Inicio de Sesion OK';
-
+        Redireccion::redirigir(servidor);
     }else{
 
         echo 'Inicio de Sesion Fake';
