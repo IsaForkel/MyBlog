@@ -2,7 +2,10 @@
 
 include_once 'app/Conexion.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
+include_once 'app/EscritorPublicaciones.inc.php';
+
 $tituloc = 'My Blog';
+
 include_once 'plantillas/documento-declaracion.inc.php';
 include_once 'plantillas/navbar.inc.php';
 ?>
@@ -63,15 +66,11 @@ include_once 'plantillas/navbar.inc.php';
             </div>
         </div>
         <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                    Ultimas Entradas
-                </div>
-                <div class="panel-body">
-                    <p>Todavia no hay entradas que mostrar</p>
-                </div>
-            </div>
+            <?php
+                Conexion::abrir_conexion();
+                EscritorPublicaciones::escribir_publicaciones();
+                Conexion::cerrar_conexion();
+            ?>
         </div>
     </div>
 </div>

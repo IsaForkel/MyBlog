@@ -25,7 +25,7 @@ if(isset($_POST['login'])){
         Redireccion::redirigir(servidor);
     }else{
 
-        echo 'Inicio de Sesion Fake';
+    
     }
 
     Conexion::cerrar_conexion();

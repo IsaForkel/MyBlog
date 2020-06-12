@@ -42,3 +42,18 @@ body {
     color: white;
 }
 
+.dropdown-menu{
+    background-color: #2b2b2b !important;
+}
+
+.dropdown-menu a:hover{
+    background-color: #2b2b2b !important;
+}
+
+.open > a{
+    background-color: #2b2b2b !important;
+}
+
+
+
+
