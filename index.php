@@ -1,80 +1,67 @@
 <?php
 
-include_once 'app/Conexion.inc.php';
-include_once 'app/RepositorioUsuario.inc.php';
-include_once 'app/EscritorPublicaciones.inc.php';
+$componentes_url = parse_url($_SERVER['REQUEST_URI']);
 
-$tituloc = 'My Blog';
+$ruta = $componentes_url['path'];
 
-include_once 'plantillas/documento-declaracion.inc.php';
-include_once 'plantillas/navbar.inc.php';
-?>
+$partes_ruta = explode('/', $ruta);
+$partes_ruta = array_filter($partes_ruta);
+$partes_ruta = array_slice($partes_ruta, 0);
 
-<div class="container-fluid">
-    <div class="jumbotron">
-        <h1>Blog de JavaDevOne</h1>
-        <p>
-            Blog dedicado a: Lo que Pasa en INGUSAC :v
-        </p>
-    </div>
-</div>
+$ruta_elegida = 'vistas/404.php';
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                            Búsqueda
-                        </div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <input type="search" class="form-control" placeholder="¿Que Buscas?">
-                            </div>
-                            <button class="form-control">Buscar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
-                            Filtro
-                        </div>
-                        <div class="panel-body">
+if ($partes_ruta[0] == 'blog') {
+    if (count($partes_ruta) == 1) {
+        $ruta_elegida = "vistas/home.php";
+    } else if (count($partes_ruta) == 2) {
+        switch ($partes_ruta[1]) {
+            case 'login':
+                $ruta_elegida = 'vistas/login.php';
+                break;
+            case 'registro':
+                $ruta_elegida = 'vistas/registro.php';
+                break;
+            case 'logout':
+                $ruta_elegida = 'vistas/logout.php';
+                break;
+            case 'relleno-dev':
+                $ruta_elegida = 'script-relleno.php';
+                break;
+            default:
+                $ruta_elegida = 'vistas/404.php';
+        }
+    } else if (count($partes_ruta) == 3) {
+        if ($partes_ruta[1] == 'registro-correcto') {
+            $nombre = $partes_ruta[2];
+            $ruta_elegida = 'vistas/registro-correcto.php';
+        }
+        if ($partes_ruta[1] == 'publicacion') {
+            $url = $partes_ruta[2];
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                            Archivo
-                        </div>
-                        <div class="panel-body">
+            include_once 'app/config.inc.php';
+            include_once 'app/Conexion.inc.php';
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <?php
-                Conexion::abrir_conexion();
-                EscritorPublicaciones::escribir_publicaciones();
-                Conexion::cerrar_conexion();
-            ?>
-        </div>
-    </div>
-</div>
+            include_once 'app/Usuario.inc.php';
+            include_once 'app/Publicacion.inc.php';
+            include_once 'app/Comentario.inc.php';
 
-<?php
-include_once 'plantillas/documento-cierre.inc.php';
-?>
+            include_once 'app/RepositorioUsuario.inc.php';
+            include_once 'app/RepositorioPublicacion.inc.php';
+            include_once 'app/RepositorioComentario.inc.php';
+
+            Conexion::abrir_conexion();
+
+            $publicacion = RepositorioPublicacion::obtener_entrada_por_url(Conexion::obtener_conexion(), $url);
+            $publicaciones_al_azar = RepositorioPublicacion::obtener_entradas_al_azar(Conexion::obtener_conexion(),3);
+            $comentarios = RepositorioComentario::obtener_comentarios(Conexion::obtener_conexion(), $publicacion->getId());
+
+            if ($publicacion != null) {
+
+                $autor = RepositorioUsuario::obtener_usuario_por_id(Conexion::obtener_conexion(), $publicacion->getAutorId());
+                $ruta_elegida = 'vistas/publicacion.php';
+            }
+        }
+    }
+}
+
+include_once $ruta_elegida;

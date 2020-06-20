@@ -33,4 +33,36 @@ class RepositorioComentario{
 
         return $comentario_insertado;
     }
+
+    public static function obtener_comentarios($conexion, $publicacion_id){
+        $comentarios = array();
+        if(isset($conexion)){
+                try {
+                    include_once 'Comentario.inc.php';
+
+                    $sql = "SELECT * FROM comentarios WHERE publicacion_id = :publicacion_id";
+                    $sentencia = $conexion -> prepare($sql);
+                    $sentencia -> bindParam(':publicacion_id', $publicacion_id, PDO::PARAM_STR);
+                    $sentencia -> execute();
+
+                    $resultado = $sentencia -> fetchAll();
+
+                    if(count($resultado)){
+                        foreach($resultado as $fila){
+                            $comentarios[] = new Comentario(
+                                $fila['id'],
+                                $fila['autor_id'],
+                                $fila['publicacion_id'],
+                                $fila['titulo'],
+                                $fila['texto'],
+                                $fila['fecha']
+                            );
+                        }
+                    }
+                } catch (PDOException $ex) {
+                    echo '<p>¡Todavia no hay comentarios!</p>';
+                }
+        }
+        return $comentarios;
+    }
 }

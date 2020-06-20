@@ -19,7 +19,7 @@ Conexion::cerrar_conexion();
             </button>
             <ul class="nav nav-pills navbar-left navbar-brand">
                 <li>
-                    <img src="img/logo.png.png" class="img-responsive" style="width:57px !important; height:57px !important" alt="">
+                    <img src="<?php echo ruta_img ?>logo.png.png" class="img-responsive" style="width:57px !important; height:57px !important" alt="">
                 </li>
                 <li>
                     <a class="navbar-brand" href="#">JavaDevOne</a>

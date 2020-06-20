@@ -8,10 +8,13 @@
 
     <?php
     echo "<title>$tituloc</title>";
+    /*<link href="http://localhost/blog/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost/blog/css/estilos.css" rel="stylesheet">*/
     ?>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link href="http://localhost/blog/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost/blog/css/estilos.css" rel="stylesheet">
 </head>
 
 <body>
+

@@ -1,5 +1,5 @@
 body {
-    background-image: url("../img/circuit.png");
+    background-image: url("../img/fondo-papel.jpg");
 }
 .jumbotron{
     background-color: #005266;
@@ -54,6 +54,14 @@ body {
     background-color: #2b2b2b !important;
 }
 
+#publicaciones{
+    color: #ffd480;
+    background-color: #2b2b2b !important;
+}
 
-
+.contenido-articulo{
+    background-color:#2b2b2b !important;
+    color: white;
+    padding: 2em !important;
+}
 

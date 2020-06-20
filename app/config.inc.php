@@ -8,10 +8,17 @@ define('nombre_base_datos', 'blog');
 
 //rutas de la web
 define("servidor", "http://localhost/blog");
-define("ruta_registro", servidor."/registro.php");
-define("ruta_registro_correcto", servidor."/registro-correcto.php");
-define("ruta_login", servidor."/login.php");
-define("ruta_entradas", servidor."/entradas.php");
-define("ruta_favoritos", servidor."/favoritos.php");
-define("ruta_autores", servidor."/autores.php");
-define("ruta_logout", servidor."/logout.php");
+define("ruta_registro", servidor."/registro");
+define("ruta_registro_correcto", servidor."/registro-correcto");
+define("ruta_login", servidor."/login");
+define("ruta_entradas", servidor."/entradas");
+define("ruta_favoritos", servidor."/favoritos");
+define("ruta_autores", servidor."/autores");
+define("ruta_logout", servidor."/logout");
+define("ruta_publicacion", servidor."/publicacion");
+
+//recursos
+define('ruta_css', servidor.'/css/');
+define("ruta_cs", servidor."/css/");
+define("ruta_js", servidor."/js/");
+define("ruta_img", servidor.'/img/');

@@ -24,10 +24,11 @@ for($usuarios = 0; $usuarios < 100; $usuarios++){
 
 for($publicaciones = 0; $publicaciones < 100; $publicaciones++){
     $titulo = sa(10);
+    $url = $titulo;
     $texto = lorem();
     $autor = rand(1,100);
 
-    $publicacion = new Publicacion('',$autor, $titulo, $texto, '', '');
+    $publicacion = new Publicacion('',$autor, $url, $titulo, $texto, '', '');
     RepositorioPublicacion::insertar_publicacion(Conexion::obtener_conexion(), $publicacion);
 }
 

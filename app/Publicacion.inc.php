@@ -4,14 +4,16 @@ class Publicacion{
 
     private $id;
     private $autor_id;
+    private $url;
     private $titulo;
     private $texto;
     private $fecha;
     private $activa;
 
-    public function __construct($id, $autor_id, $titulo, $texto, $fecha, $activa){
+    public function __construct($id, $autor_id, $url, $titulo, $texto, $fecha, $activa){
         $this -> id = $id;
         $this -> autor_id = $autor_id;
+        $this -> url = $url;
         $this -> titulo = $titulo;
         $this -> texto = $texto;
         $this -> fecha = $fecha;
@@ -32,6 +34,14 @@ class Publicacion{
 
     public function setAutorId($autor_id){
         $this -> autor_id = $autor_id;
+    }
+
+    public function getUrl(){
+        return $this -> url;
+    }
+
+    public function setUrl($url){
+        $this -> url = $url;
     }
     
     public function getTitulo(){
