@@ -20,6 +20,7 @@ Conexion::abrir_conexion();
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                 <?php
                                     $autor_comentario = RepositorioUsuario::obtener_nombre_usuario_por_id(Conexion::obtener_conexion(), $comentario->getAutorId());
                                     echo $autor_comentario;

@@ -32,7 +32,6 @@ CREATE TABLE comentarios(
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
     autor_id INT NOT NULL,
     publicacion_id INT NOT NULL,
-    titulo VARCHAR(255) NOT NULL,
     texto TEXT CHARACTER SET UTF8 NOT NULL,
     fecha DATETIME NOT NULL,
     PRIMARY KEY(id),

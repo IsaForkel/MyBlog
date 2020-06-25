@@ -33,12 +33,11 @@ for($publicaciones = 0; $publicaciones < 100; $publicaciones++){
 }
 
 for($comentarios = 0; $comentarios < 100; $comentarios++){
-    $titulo = sa(10);
     $texto = lorem2();
     $autor = rand(1,100);
     $publicacion = rand(1,100);
 
-    $comentario = new Comentario('', $autor, $publicacion, $titulo, $texto, '');
+    $comentario = new Comentario('', $autor, $publicacion, $texto, '');
     RepositorioComentario::insertar_comentario(Conexion::obtener_conexion(), $comentario);;
 }
 

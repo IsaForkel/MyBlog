@@ -36,6 +36,14 @@ body {
     background-color: #4682B4 !important;
     color: white !important;
 }
+.btn-danger{
+    background-color: #FC5050 !important;
+    color: white;
+}
+.btn-danger:hover{
+    background-color: #F85A5A !important;
+    color: white !important;
+}
 
 #titulo{
     background-color: #005266;
@@ -64,4 +72,78 @@ body {
     color: white;
     padding: 2em !important;
 }
+
+.sidebar{
+    background-color: #2b2b2b;
+    color: #D1CDC5;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.tamaño{
+    padding-left: 2em !important;
+    padding-right: 2em !important;
+}
+
+.color-publicacion a:link, .color-publicacion a:visited{
+    color: #D29808 !important;
+}
+
+.color-publicacion a:hover, .color-publicacion a:active{
+    background-color: #D29808 !important;
+    color: white !important;
+}
+
+.color-comentario a:link, .color-comentario a:visited{
+    color: #005266 !important;
+}
+
+.color-comentario a:hover, .color-comentario a:active{
+    background-color: #005266 !important;
+    color: white !important;
+}
+
+.color-favorito a:link, .color-favorito a:visited{
+    color: #F85A5A !important;
+}
+
+.color-favorito a:hover, .color-favorito a:active{
+    background-color: #F85A5A !important;
+    color: white !important;
+}
+
+.gg-elemento{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.gg-elemento:hover{
+    background-color: #2b2b2b!important;
+    color: whitesmoke!important;
+}
+
+.division{
+    border : 0.2em solid whitesmoke !important;
+    margin-bottom : 1.2em !important;
+}
+
+.division-contraste{
+    border : 0.2em solid black !important;
+    margin-bottom : 1.2em !important;
+}
+#gg-publicaciones{
+    background-color: #D29808;
+    color: whitesmoke;
+}
+
+#gg-comentarios{
+    background-color: #005266;
+    color: whitesmoke;
+}
+
+#gg-favoritos{
+    background-color: #F85A5A;
+    color: whitesmoke;
+}
+
+
 

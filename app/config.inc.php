@@ -16,6 +16,10 @@ define("ruta_favoritos", servidor."/favoritos");
 define("ruta_autores", servidor."/autores");
 define("ruta_logout", servidor."/logout");
 define("ruta_publicacion", servidor."/publicacion");
+define("ruta_gestor", servidor."/gestor");
+define("ruta_gestor_publicaciones", servidor."/gestor/publicaciones");
+define("ruta_gestor_comentarios", servidor."/gestor/comentarios");
+define("ruta_gestor_favoritos", servidor."/gestor/favoritos");
 
 //recursos
 define('ruta_css', servidor.'/css/');

@@ -27,6 +27,10 @@ if ($partes_ruta[0] == 'blog') {
             case 'relleno-dev':
                 $ruta_elegida = 'script-relleno.php';
                 break;
+            case 'gestor':
+                $ruta_elegida = 'vistas/gestor.php';
+                $gestor_actual = '';
+                break;
             default:
                 $ruta_elegida = 'vistas/404.php';
         }
@@ -59,6 +63,22 @@ if ($partes_ruta[0] == 'blog') {
 
                 $autor = RepositorioUsuario::obtener_usuario_por_id(Conexion::obtener_conexion(), $publicacion->getAutorId());
                 $ruta_elegida = 'vistas/publicacion.php';
+            }
+            Conexion::cerrar_conexion();
+        }
+        if($partes_ruta[1] == 'gestor'){
+            switch($partes_ruta[2]){
+                case 'publicaciones':
+                    $gestor_actual = 'publicaciones';
+                    $ruta_elegida = 'vistas/gestor.php';
+                    break;
+                case 'comentarios':
+                    $gestor_actual = 'comentarios';
+                    $ruta_elegida = 'vistas/gestor.php';
+                    break;
+                case 'favoritos':
+                    $gestor_actual = 'favoritos';
+                    $ruta_elegida = 'vistas/gestor.php';
             }
         }
     }
