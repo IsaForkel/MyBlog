@@ -145,5 +145,55 @@ body {
     color: whitesmoke;
 }
 
+#gestor-pub{
+    background-color: #2b2b2b !important;
+    color: #ffd480 !important;
+}
+
+.titulo{
+    color: white;
+}
+
+#tabla-publicacion{
+    background-color: white;
+    border-collapse: collapse;
+}
+
+#tabla-publicacion thead{
+    background-color: #e05d11;
+    border-bottom: solid 0.5em #923b00;
+    color: white;
+}
+
+#tabla-publicacion tbody tr:nth-child(odd){
+    background-color: #ddd;
+}
+
+#tabla-publicacion tbody tr:hover{
+    background-color: orange;
+    color: white;
+}
+
+#tabla-publicacion tbody td button, .ir-publicacion{
+    background-color: #585757;
+    color: white;
+    border: solid 0.1em black;
+}
+
+#tabla-publicacion tbody td button:hover, .ir-publicacion:hover{
+    background-color: #2b2b2b;
+    color: white;
+}
+
+#boton-nueva-publicacion{
+    background-color: #923b00 !important;
+    border: solid 0.1em #923b00 !important;
+}
+
+#boton-nueva-publicacion:hover{
+    background-color: #e05d11 !important;
+}
+
+
 
 

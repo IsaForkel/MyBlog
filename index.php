@@ -31,6 +31,9 @@ if ($partes_ruta[0] == 'blog') {
                 $ruta_elegida = 'vistas/gestor.php';
                 $gestor_actual = '';
                 break;
+            case 'nueva-publicacion':
+                $ruta_elegida = 'vistas/nueva-publicacion.php';
+                break;
             default:
                 $ruta_elegida = 'vistas/404.php';
         }
@@ -56,7 +59,7 @@ if ($partes_ruta[0] == 'blog') {
             Conexion::abrir_conexion();
 
             $publicacion = RepositorioPublicacion::obtener_entrada_por_url(Conexion::obtener_conexion(), $url);
-            $publicaciones_al_azar = RepositorioPublicacion::obtener_entradas_al_azar(Conexion::obtener_conexion(),3);
+            $publicaciones_al_azar = RepositorioPublicacion::obtener_entradas_al_azar(Conexion::obtener_conexion(), 3);
             $comentarios = RepositorioComentario::obtener_comentarios(Conexion::obtener_conexion(), $publicacion->getId());
 
             if ($publicacion != null) {
@@ -66,8 +69,8 @@ if ($partes_ruta[0] == 'blog') {
             }
             Conexion::cerrar_conexion();
         }
-        if($partes_ruta[1] == 'gestor'){
-            switch($partes_ruta[2]){
+        if ($partes_ruta[1] == 'gestor') {
+            switch ($partes_ruta[2]) {
                 case 'publicaciones':
                     $gestor_actual = 'publicaciones';
                     $ruta_elegida = 'vistas/gestor.php';

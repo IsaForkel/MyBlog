@@ -20,6 +20,7 @@ define("ruta_gestor", servidor."/gestor");
 define("ruta_gestor_publicaciones", servidor."/gestor/publicaciones");
 define("ruta_gestor_comentarios", servidor."/gestor/comentarios");
 define("ruta_gestor_favoritos", servidor."/gestor/favoritos");
+define("ruta_nueva_publicacion", servidor."/nueva-publicacion");
 
 //recursos
 define('ruta_css', servidor.'/css/');

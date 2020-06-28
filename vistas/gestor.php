@@ -35,6 +35,12 @@ switch ($gestor_actual) {
         include_once 'plantillas/gestor-generico.inc.php';
         break;
     case 'publicaciones':
+        Conexion::abrir_conexion();
+        $array_publicaciones = RepositorioPublicacion::obtener_publicaciones_usuario_fecha_descendente(
+            Conexion::obtener_conexion(),
+            $_SESSION['id_usuario']
+        );
+        Conexion::cerrar_conexion();
         include_once 'plantillas/gestor-publicaciones.inc.php';
         break;
     case 'comentarios':

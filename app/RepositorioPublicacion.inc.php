@@ -175,4 +175,45 @@ class RepositorioPublicacion
         }
         return $total_publicaciones;
     }
+
+    public static function obtener_publicaciones_usuario_fecha_descendente($conexion, $id_usuario){
+        $publicaciones_obtenidas = [];
+
+        if (isset($conexion)) {
+            try {
+
+                $sql = "SELECT a.id, a.autor_id, a.url, a.titulo, a.texto, a.fecha, a.activa, COUNT(b.id) AS 'cantidad_comentarios'
+                        FROM publicaciones a
+                        LEFT JOIN comentarios b ON a.id = b.publicacion_id
+                        WHERE a.autor_id = :autor_id
+                        GROUP BY  a.id
+                        ORDER BY a.fecha DESC";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':autor_id', $id_usuario, PDO::PARAM_STR);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $publicaciones_obtenidas [] = array(
+                            new Publicacion(
+                                $fila['id'],
+                                $fila['autor_id'],
+                                $fila['url'],
+                                $fila['titulo'],
+                                $fila['texto'],
+                                $fila['fecha'],
+                                $fila['activa'],
+                            ),
+                            $fila['cantidad_comentarios']
+                        );
+
+                    }
+                }
+            } catch (PDOException $ex) {
+                print "Error" . $ex->getMessage();
+            }
+        }
+        return $publicaciones_obtenidas;
+    }
 }
